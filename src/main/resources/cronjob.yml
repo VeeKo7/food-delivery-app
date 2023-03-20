@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+name: weather-cronjob
+spec:
+schedule: "15 * * * *" #run 15 minutes after the hour, every hour
+jobTemplate:
+template:
+containers:
+-name: container
+image: image
+command: ["/bin/bash", "-c"]
+args:
+-date: echo "Hello World!"
+restartPolicy: OnFailure #container will be restarted if it fails
+concurrencyPolicy: Forbid #means CronJob will not create new jobs if the previous job is still running
