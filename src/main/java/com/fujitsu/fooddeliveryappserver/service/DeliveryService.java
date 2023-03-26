@@ -1,7 +1,6 @@
 package com.fujitsu.fooddeliveryappserver.service;
 
 import org.springframework.stereotype.Service;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
@@ -33,16 +32,11 @@ public class DeliveryService {
                                          @QueryParam("vehicleType") String vehicleType,
                                          @QueryParam("weatherCondition") String weatherCondition) {
         double regionalBaseFee = getRegionalBaseFee(city, vehicleType);
-        double extraFee = getExtraFee(weatherCondition);
+        double extraFee = getExtraFee(weatherCondition, vehicleType, airTemperature, windSpeed);
         double totalFee = regionalBaseFee + extraFee;
 
         // return the total fee as a JSON object
         return Response.ok("{\"totalFee\": " + totalFee + "}").build();
-    }
-
-    private double getExtraFee(String weatherCondition) {
-        //TODO: logic
-        return 0.0;
     }
 
     /**

@@ -1,9 +1,7 @@
 package com.fujitsu.fooddeliveryappserver.dao;
 
 import com.fujitsu.fooddeliveryappserver.model.WeatherData;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.Time;
 import java.util.Optional;
